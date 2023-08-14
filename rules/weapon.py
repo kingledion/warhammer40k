@@ -1,3 +1,6 @@
+from typing import Any
+
+
 class WeaponAbility:
     def __init__(self, name, val=0):
         self.name = name
@@ -31,14 +34,16 @@ class Weapon:
 
     def __init__(
         self,
+        name: str,
         range: int,
         a: int,
         ws: int,
         s: int,
         ap: int,
         d: int,
-        abilities: list[WeaponAbility]
+        abilities: list[WeaponAbility] = []
     ):
+        self.name: str = name
         self.range: int = range
         self.a: int = a
         self.ws: int = ws
@@ -47,8 +52,16 @@ class Weapon:
         self.d: int = d
         
         self.abilities: list[WeaponAbility] = abilities
-    
 
+    def __str__(self) -> str:
+        return self.name
+    
+    def get_range(self) -> int:
+        return self.range
+        
+    def get_attacks(self) -> int:
+        return self.a
+    
     def get_score(self) -> int:
         return self.ws
     
@@ -61,16 +74,12 @@ class Weapon:
     def get_damage(self) -> int:
         return self.d
     
+    def is_assault(self) -> bool:
+        return Assault in self.abilities
+    
     def is_heavy(self) -> bool:
         return Heavy in self.abilities
     
-
-
-# Space Marines
-BoltPistol = Weapon(12, 1, 3, 4, 0, 1, [Pistol])
-BoltRifle = Weapon(24, 2, 3, 4, -1, 1, [Assault, Heavy])
-CCW_Intercessor = Weapon(0, 3, 3, 4, 0, 1)
-
-# Necrons
-GaussFlayer = Weapon(24, 1, 4, 4, 0, 1)
-CCW_NecronWarrior = Weapon(0, 1, 4, 4, 0, 1)
+    def is_pistol(self) -> bool:
+        return Pistol in self.abilities
+    
