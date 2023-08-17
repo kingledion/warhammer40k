@@ -36,20 +36,20 @@ class Weapon:
         self,
         name: str,
         range: int,
-        a: int,
+        a: int | str,
         ws: int,
         s: int,
         ap: int,
-        d: int,
+        d: int | str,
         abilities: set[WeaponAbility] = []
     ):
         self.name: str = name
         self.range: int = range
-        self.a: int = a
+        self.a: int | str = a
         self.ws: int = ws
         self.s: int = s
         self.ap: int = ap
-        self.d: int = d
+        self.d: int | str = d
         
         self.abilities: set[WeaponAbility] = abilities
 

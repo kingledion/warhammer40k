@@ -8,7 +8,7 @@ def main():
     attacker = Unit("Intercessor Squad", (Intercessor, 10))
     defender = Unit("Necron Warriors", (NecronWarrior, 20))
 
-    bmp.shooting(attacker, 12, defender)
+    bmp.shooting(defender, 12, attacker)
 
     
 
