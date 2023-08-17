@@ -1,34 +1,34 @@
-from typing import Any
+from rules.keyword import Keyword
+import rules.keyword
 
 
 class WeaponAbility:
-    def __init__(self, name, val=0):
-        self.name = name
-        self.value = val
+    def __init__(self, name: str, val: int = 0):
+        self.name: str = name
 
 
-Assault = WeaponAbility("assault")
-Heavy = WeaponAbility("heavy")
-Pistol = WeaponAbility("pistol")
+Assault = WeaponAbility("Assault")
+Heavy = WeaponAbility("Heavy")
+Pistol = WeaponAbility("Pistol}")
+RapidFire1 = WeaponAbility("Rapid Fire 1")
+RapidFire2 = WeaponAbility("Rapid Fire 2")
+Torrent = WeaponAbility("Torrent")
+SustainedHits1 = WeaponAbility("Sustained Hits 1")
+SustainedHits2 = WeaponAbility("Sustained Hits 2")
+LethalHits = WeaponAbility("Lethal Hits")
+AntiInfantry4 = WeaponAbility("Anti-Infantry 4+")
+DevastatingWounds = WeaponAbility("Devastating Wounds")
+TwinLinked = WeaponAbility("Twin Linked")
 
-# assault=False,
-# rapid_fire=0,
+
 # # ignores_cover=False,
-# twin_linked=False,
-# pistol=False,
-# torrent=False,
-# lethal_hits=False,
 # lance=False,
 # # ignores_cover=False,
 # # precision=False,
 # blast=False,
 # melta=0,
-# heavy=False,
 # hazardous=False,
-# devastating_wounds=False,
-# sustained_hits=0,
 # extra_attacks=False, 
-# anti_infantry=0,
 
 class Weapon:
 
@@ -41,7 +41,7 @@ class Weapon:
         s: int,
         ap: int,
         d: int,
-        abilities: list[WeaponAbility] = []
+        abilities: set[WeaponAbility] = []
     ):
         self.name: str = name
         self.range: int = range
@@ -51,7 +51,7 @@ class Weapon:
         self.ap: int = ap
         self.d: int = d
         
-        self.abilities: list[WeaponAbility] = abilities
+        self.abilities: set[WeaponAbility] = abilities
 
     def __str__(self) -> str:
         return self.name
@@ -74,12 +74,43 @@ class Weapon:
     def get_damage(self) -> int:
         return self.d
     
-    def is_assault(self) -> bool:
+    def has_assault(self) -> bool:
         return Assault in self.abilities
     
-    def is_heavy(self) -> bool:
+    def has_heavy(self) -> bool:
         return Heavy in self.abilities
     
-    def is_pistol(self) -> bool:
+    def has_pistol(self) -> bool:
         return Pistol in self.abilities
+    
+    def has_rapid_fire(self) -> int:
+        if RapidFire1 in self.abilities:
+            return 1
+        elif RapidFire2 in self.abilities:
+            return 2
+        return 0
+    
+    def has_torrent(self) -> bool:
+        return Torrent in self.abilities
+    
+    def has_sustained_hits(self) -> int:
+        if SustainedHits1 in self.abilities:
+            return 1
+        elif SustainedHits2 in self.abilities:
+            return 2
+        return 0
+    
+    def has_lethal_hits(self) -> bool:
+        return LethalHits in self.abilities
+    
+    def has_anti_x(self) -> tuple[Keyword, int]:
+        if AntiInfantry4 in self.abilities:
+            return (rules.model.Infantry, 4)
+        return (None, None)
+        
+    def has_twin_linked(self) -> bool:
+        return TwinLinked in self.abilities
+        
+    def has_devastating_wounds(self) -> bool:
+        return DevastatingWounds in self.abilities
     

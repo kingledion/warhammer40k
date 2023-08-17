@@ -1,13 +1,5 @@
-from rules.weapon import *
-
-Tag = str
-
-# unit type
-infantry = Tag("infantry")
-
-# faction
-adeptus_astartes = Tag("adeptus_astartes")
-necrons = Tag("necrons")
+from rules.weapon import Weapon
+from rules.keyword import Keyword
 
 class UnitAbility:
     def __init__(self, name, val=0):
@@ -24,7 +16,7 @@ class Model:
         w: int,
         ld: int,
         oc: int,
-        tags: list[Tag] = [],
+        keywords: set[Keyword] = [],
         weapons: list[Weapon] = [],
     ):
         self.m: int = m
@@ -34,7 +26,7 @@ class Model:
         self.ld: int = ld
         self.oc: int = oc
 
-        self.tags: list[Tag] = tags
+        self.keywords: set[Keyword] = keywords
         self.weapons: list[Weapon] = weapons
 
     def get_toughness(self):
@@ -61,5 +53,8 @@ class Model:
     
     def get_feel_no_pain(self) -> int:
         return 0
+    
+    def has_keyword(self, keyword) -> bool:
+        return keyword in self.keywords
 
 
