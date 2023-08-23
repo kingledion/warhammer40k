@@ -5,10 +5,14 @@ import battle.benchmark_phase as bmp
 
 def main():
 
-    attacker = Unit("Intercessor Squad", (Intercessor, 10))
-    defender = Unit("Necron Warriors", (NecronWarrior, 20))
+    intercessor_squad = Unit("Intercessor Squad", (Intercessor, 10))
+    infernus_squad = Unit("Pyreblaster Squad", (Infernus, 10))
+    inceptor_squad_bolter = Unit("Inceptor Squad (Assault Bolters)", (Inceptor_Bolter, 3))
 
-    bmp.shooting(defender, 12, attacker)
+
+    necron_warriors = Unit("Necron Warriors", (NecronWarrior, 20))
+
+    bmp.shooting(inceptor_squad_bolter, 12, necron_warriors)
 
     
 

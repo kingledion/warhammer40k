@@ -1,6 +1,6 @@
 import numpy as np
 import numpy.typing as npt
-#from typing import Self  **** UPGRATE TO 3.11 *****
+#from typing import Self  **** UPGRADE TO 3.11 *****
 
 from rules.weapon import Weapon
 from rules.unit import Unit

@@ -7,6 +7,6 @@ Intercessor = Model(6, 4, 3, 2, 6, 2, keywords = {AdeptusAstartes, Infantry}, we
 Intercessor_GrenadeFrag = Model(6, 4, 3, 2, 6, 2, keywords = {AdeptusAstartes, Infantry}, weapons = [BoltPistol, AstartesGrenadeLauncher_Frag, CCW_Astartes])
 Intercessor_GrenadeKrak = Model(6, 4, 3, 2, 6, 2, keywords = {AdeptusAstartes, Infantry}, weapons = [BoltPistol, AstartesGrenadeLauncher_Krak, CCW_Astartes])
 Infernus = Model(6, 4, 3, 2, 6, 1, keywords = {AdeptusAstartes, Infantry}, weapons = [BoltPistol, Pyreblaster, CCW_Astartes])
-
+Inceptor_Bolter = Model(10, 3, 6, 6, 3, 1, keywords= {AdeptusAstartes, Infantry}, weapons={AssaultBolters, CCW_Astartes})
 # Necrons
 NecronWarrior = Model(5, 4, 4, 1, 7, 2, keywords = {Necrons, Infantry}, weapons = [GaussFlayer, CCW_NecronWarrior])
